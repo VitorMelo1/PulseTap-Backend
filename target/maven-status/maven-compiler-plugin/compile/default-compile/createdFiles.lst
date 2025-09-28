@@ -1,0 +1,5 @@
+com\pulsetap\model\User.class
+com\pulsetap\service\AuthService.class
+com\pulsetap\PulseTapApplication.class
+com\pulsetap\service\JsonStorageService$1.class
+com\pulsetap\service\JsonStorageService.class

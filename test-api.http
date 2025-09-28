@@ -1,0 +1,85 @@
+### Testar API PulseTap Backend
+### Execute estes comandos no VS Code com extensão REST Client ou use curl
+
+### 1. Testar se API está funcionando
+GET http://localhost:8080/api/auth/test
+
+### 2. Registrar novo usuário
+POST http://localhost:8080/api/auth/register
+Content-Type: application/json
+
+{
+  "email": "teste@exemplo.com",
+  "firstName": "João",
+  "lastName": "Silva",
+  "password": "123456"
+}
+
+### 3. Fazer login com usuário de teste
+POST http://localhost:8080/api/auth/login
+Content-Type: application/json
+
+{
+  "email": "admin@pulsetap.com",
+  "password": "123456"
+}
+
+### 4. Fazer login com outro usuário de teste
+POST http://localhost:8080/api/auth/login
+Content-Type: application/json
+
+{
+  "email": "user@pulsetap.com",
+  "password": "123456"
+}
+
+### 5. Verificar se email existe
+GET http://localhost:8080/api/auth/check-email/admin@pulsetap.com
+
+### 6. Listar todos os usuários
+GET http://localhost:8080/api/auth/users
+
+### 7. Obter perfil do usuário (substitua TOKEN pelo token retornado no login)
+GET http://localhost:8080/api/user/profile
+Authorization: Bearer TOKEN_AQUI
+
+### 8. Verificar token
+GET http://localhost:8080/api/user/verify-token
+Authorization: Bearer TOKEN_AQUI
+
+### 9. Atualizar perfil (substitua TOKEN pelo token retornado no login)
+PUT http://localhost:8080/api/user/profile
+Authorization: Bearer TOKEN_AQUI
+Content-Type: application/json
+
+{
+  "firstName": "Nome Atualizado",
+  "lastName": "Sobrenome Atualizado"
+}
+
+### Exemplo de teste com curl (copie e cole no terminal):
+
+### Testar API
+curl -X GET http://localhost:8080/api/auth/test
+
+### Registrar usuário
+curl -X POST http://localhost:8080/api/auth/register \
+  -H "Content-Type: application/json" \
+  -d '{
+    "email": "novo@usuario.com",
+    "firstName": "Novo",
+    "lastName": "Usuário",
+    "password": "123456"
+  }'
+
+### Fazer login
+curl -X POST http://localhost:8080/api/auth/login \
+  -H "Content-Type: application/json" \
+  -d '{
+    "email": "admin@pulsetap.com",
+    "password": "123456"
+  }'
+
+### Obter perfil (substitua TOKEN pelo token retornado)
+curl -X GET http://localhost:8080/api/user/profile \
+  -H "Authorization: Bearer TOKEN_AQUI"
