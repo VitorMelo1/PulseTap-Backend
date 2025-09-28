@@ -15,13 +15,14 @@ import java.util.concurrent.atomic.AtomicLong;
 @Service
 public class JsonStorageService {
     
-    private static final String USERS_FILE = "users.json";
-    private static final String COUNTER_FILE = "user_counter.json";
+    private static final String USERS_FILE = System.getProperty("user.dir") + "/users.json";
+    private static final String COUNTER_FILE = System.getProperty("user.dir") + "/user_counter.json";
     private final ObjectMapper objectMapper;
     private final AtomicLong userCounter;
     
     public JsonStorageService() {
         this.objectMapper = new ObjectMapper();
+        this.objectMapper.registerModule(new com.fasterxml.jackson.datatype.jsr310.JavaTimeModule());
         this.userCounter = new AtomicLong(loadUserCounter());
     }
     

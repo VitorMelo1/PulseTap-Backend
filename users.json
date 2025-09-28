@@ -1,6 +1,24 @@
-[ {
-  "id" : 1,
-  "email" : "admin@pulsetap.com",
-  "firstName" : "Admin",
-  "lastName" : "PulseTap",
-  "createdAt"
+[
+  {
+    "id": 1,
+    "email": "admin@pulsetap.com",
+    "firstName": "Admin",
+    "lastName": "PulseTap",
+    "password": "$2a$10$LzEVixL394NeIUSiImgEb./S3wwYUCxTBh.9.jcTuVq97Y/y64WR6",
+    "createdAt": "2025-09-28T15:42:34",
+    "updatedAt": "2025-09-28T15:42:34",
+    "lastLogin": null,
+    "isActive": true
+  },
+  {
+    "id": 2,
+    "email": "user@pulsetap.com",
+    "firstName": "Usuário",
+    "lastName": "Teste",
+    "password": "$2a$10$LzEVixL394NeIUSiImgEb./S3wwYUCxTBh.9.jcTuVq97Y/y64WR6",
+    "createdAt": "2025-09-28T15:42:34",
+    "updatedAt": "2025-09-28T15:42:34",
+    "lastLogin": null,
+    "isActive": true
+  }
+]

@@ -23,11 +23,21 @@ public class AuthController {
     
     // Endpoint para registro de usuários
     @PostMapping("/register")
-    public ResponseEntity<?> register(@Valid @RequestBody RegisterRequest request) {
+    public ResponseEntity<?> register(@RequestBody RegisterRequest request) {
         try {
+            System.out.println("=== REGISTER REQUEST ===");
+            System.out.println("Email: " + request.getEmail());
+            System.out.println("FirstName: " + request.getFirstName());
+            System.out.println("LastName: " + request.getLastName());
+            System.out.println("Password: " + (request.getPassword() != null ? "[PROTECTED]" : "NULL"));
+            
             AuthResponse response = authService.register(request);
             return ResponseEntity.status(HttpStatus.CREATED).body(response);
         } catch (Exception e) {
+            System.out.println("=== REGISTER ERROR ===");
+            System.out.println("Error: " + e.getMessage());
+            e.printStackTrace();
+            
             Map<String, String> error = new HashMap<>();
             error.put("error", e.getMessage());
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(error);
@@ -36,7 +46,7 @@ public class AuthController {
     
     // Endpoint para login
     @PostMapping("/login")
-    public ResponseEntity<?> login(@Valid @RequestBody LoginRequest request) {
+    public ResponseEntity<?> login(@RequestBody LoginRequest request) {
         try {
             AuthResponse response = authService.login(request);
             return ResponseEntity.ok(response);
