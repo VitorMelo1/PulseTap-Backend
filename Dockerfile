@@ -1,5 +1,8 @@
-# Use Maven with OpenJDK 17
-FROM maven:3.8.6-openjdk-17
+# Use OpenJDK 17
+FROM openjdk:17-jdk-slim
+
+# Install Maven
+RUN apt-get update && apt-get install -y maven && rm -rf /var/lib/apt/lists/*
 
 # Set working directory
 WORKDIR /app
