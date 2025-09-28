@@ -1,5 +1,13 @@
-com\pulsetap\model\User.class
-com\pulsetap\service\AuthService.class
+com\pulsetap\dto\LoginRequest.class
+com\pulsetap\controller\UserController.class
 com\pulsetap\PulseTapApplication.class
+com\pulsetap\controller\AuthController.class
+com\pulsetap\config\DataInitializer.class
+com\pulsetap\service\JwtService.class
+com\pulsetap\model\User.class
+com\pulsetap\dto\RegisterRequest.class
+com\pulsetap\dto\AuthResponse.class
+com\pulsetap\config\SecurityConfig.class
+com\pulsetap\service\AuthService.class
 com\pulsetap\service\JsonStorageService$1.class
 com\pulsetap\service\JsonStorageService.class

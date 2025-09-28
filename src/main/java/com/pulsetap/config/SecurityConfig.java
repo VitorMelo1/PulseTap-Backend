@@ -46,6 +46,7 @@ public class SecurityConfig {
         // Permitir origens específicas (Vercel + desenvolvimento)
         configuration.setAllowedOriginPatterns(Arrays.asList(
             "https://pulsetap-iota.vercel.app",
+            "https://*.vercel.app",
             "http://localhost:5173",
             "http://localhost:3000"
         ));
