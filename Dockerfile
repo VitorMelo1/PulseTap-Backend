@@ -1,24 +1,20 @@
-# Use OpenJDK 17
-FROM openjdk:17-jdk-slim
+# Use Maven with OpenJDK 17
+FROM maven:3.9.6-openjdk-17-slim
 
 # Set working directory
 WORKDIR /app
 
-# Copy Maven wrapper files
-COPY mvnw .
-COPY .mvn .mvn
-
-# Copy pom.xml
+# Copy pom.xml first for better caching
 COPY pom.xml .
 
 # Download dependencies (this step will be cached if pom.xml doesn't change)
-RUN ./mvnw dependency:go-offline -B
+RUN mvn dependency:go-offline -B
 
 # Copy source code
 COPY src src
 
 # Build the application
-RUN ./mvnw clean package -DskipTests
+RUN mvn clean package -DskipTests
 
 # Expose port
 EXPOSE 8080
