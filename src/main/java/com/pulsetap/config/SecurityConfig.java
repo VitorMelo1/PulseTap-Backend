@@ -48,7 +48,8 @@ public class SecurityConfig {
             "https://pulsetap-iota.vercel.app",
             "https://*.vercel.app",
             "http://localhost:5173",
-            "http://localhost:3000"
+            "http://localhost:3000",
+            "*"
         ));
         
         // Métodos permitidos
