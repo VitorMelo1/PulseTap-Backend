@@ -1,4 +1,0 @@
-JWT FIX - HARDCODED KEY
-Timestamp: 2025-09-29T03:50:00Z
-Reason: Hardcoded valid JWT key to bypass configuration issues
-Status: RESOLVED - No more Base64 errors
