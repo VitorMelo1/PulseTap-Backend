@@ -1,0 +1,9 @@
+FORCE REDEPLOY - JWT KEY FIX
+Timestamp: 2025-09-29T03:45:00Z
+Reason: Fixed JWT secret key Base64 encoding issue
+Changes:
+- Updated JWT secret to valid Base64 string
+- Modified JwtService to use proper Base64 decoding
+- Updated both application.properties and application-production.properties
+
+This file forces Railway to redeploy the application with the new JWT configuration.
