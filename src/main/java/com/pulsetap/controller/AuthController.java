@@ -48,9 +48,21 @@ public class AuthController {
     @PostMapping("/login")
     public ResponseEntity<?> login(@RequestBody LoginRequest request) {
         try {
+            System.out.println("=== LOGIN REQUEST ===");
+            System.out.println("Email: " + request.getEmail());
+            System.out.println("Password: " + (request.getPassword() != null ? "[PROTECTED]" : "NULL"));
+            
             AuthResponse response = authService.login(request);
+            System.out.println("=== LOGIN SUCCESS ===");
+            System.out.println("User ID: " + response.getUser().getId());
+            System.out.println("Token: " + (response.getToken() != null ? "[GENERATED]" : "NULL"));
+            
             return ResponseEntity.ok(response);
         } catch (Exception e) {
+            System.out.println("=== LOGIN ERROR ===");
+            System.out.println("Error: " + e.getMessage());
+            e.printStackTrace();
+            
             Map<String, String> error = new HashMap<>();
             error.put("error", e.getMessage());
             return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(error);
