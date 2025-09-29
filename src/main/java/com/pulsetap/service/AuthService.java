@@ -24,6 +24,11 @@ public class AuthService {
     
     // Registrar novo usuário
     public AuthResponse register(RegisterRequest request) {
+        System.out.println("=== REGISTER SERVICE DEBUG ===");
+        System.out.println("Email: " + request.getEmail());
+        System.out.println("Password: " + (request.getPassword() != null ? "[PROTECTED]" : "NULL"));
+        System.out.println("Password length: " + (request.getPassword() != null ? request.getPassword().length() : 0));
+        
         // Verificar se email já existe
         if (jsonStorageService.existsByEmail(request.getEmail())) {
             throw new RuntimeException("Email já está em uso");
@@ -34,10 +39,15 @@ public class AuthService {
         user.setEmail(request.getEmail());
         user.setFirstName(request.getFirstName());
         user.setLastName(request.getLastName());
-        user.setPassword(passwordEncoder.encode(request.getPassword()));
+        
+        String encodedPassword = passwordEncoder.encode(request.getPassword());
+        System.out.println("Encoded password: " + (encodedPassword != null ? "[ENCODED]" : "NULL"));
+        user.setPassword(encodedPassword);
         
         // Salvar usuário
         User savedUser = jsonStorageService.saveUser(user);
+        System.out.println("Saved user ID: " + savedUser.getId());
+        System.out.println("Saved user password: " + (savedUser.getPassword() != null ? "[SAVED]" : "NULL"));
         
         // Gerar token JWT
         String token = jwtService.generateTokenWithUserInfo(
