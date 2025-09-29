@@ -27,7 +27,6 @@ public class User {
     
     @NotBlank(message = "Senha é obrigatória")
     @Size(min = 6, message = "Senha deve ter pelo menos 6 caracteres")
-    @JsonIgnore
     private String password;
     
     @JsonFormat(pattern = "yyyy-MM-dd'T'HH:mm:ss")
